@@ -1,0 +1,24 @@
+import example.*
+
+test "caso 1"{
+    //el paquete no esta pago, Neo no puede llevarlo a la matrix 
+    neo.cargarCredito()
+    neo.verificarEntrega(paquete, matrix)
+    assert.notThat(neo.paqueteEntregado())
+}
+test "caso 2"{
+    paquete.pagarPaquete()
+    jean.verificarEntrega(paquete, matrix)
+    assert.that(jean.paqueteEntregado())
+}
+test "caso 3"{
+    paquete.pagarPaquete()
+    sara.vehiculo(camion)
+    camion.cantAcoplados(4)
+    assert.notThat(sara.paqueteEntregado())
+}
+test "caso 4"{
+    paquete.pagarPaquete()
+    sara.vehiculo(moto)
+    assert.notThat(sara.paqueteEntregado())
+}
