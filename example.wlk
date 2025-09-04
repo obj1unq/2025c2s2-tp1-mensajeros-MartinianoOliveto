@@ -1,5 +1,5 @@
 
-//METODO TOP DOWN 
+
 //DESTINOS
 object puenteBrooklyn{
 	method dejarPasar(mensajero){
@@ -41,15 +41,17 @@ object jean{
 		return paqueteEntregado
 	}
 
-	//preguntamos al mensajero si puede realizar la entrega (el paquete debe estar pago y este debe ser capaz de llegar a destino)
+	//preguntamos al mensajero si puede realizar la entrega 
+	//(el paquete debe estar pago y este debe ser capaz de llegar a destino)
 	//se divide en dos subtareas, una verifica el pago del paquete y otra si llega a destino
+
 	method verificarEntrega(paquete, destino){
-		return self.verificarEntrega(paquete) && self.verificarDestino(destino)
+		return self.verificarPago(paquete) && self.verificarDestino(destino)
 	}
 	method verificarDestino(destino){
 		return destino.dejarPasar(self)
 	}
-	method verificarEntrega(paquete){
+	method verificarPago(paquete){
 		return paquete.estaPago()
 	}
 }
@@ -79,13 +81,14 @@ object neo{
 	method cargarCredito(){
 		puedeComunicarse = true 
 	}
+
 	method verificarEntrega(paquete, destino){
-		return self.verificarEntrega(paquete) && self.verificarDestino(destino)
+		return self.verificarPago(paquete) && self.verificarDestino(destino)
 	}
 	method verificarDestino(destino){
 		return destino.dejarPasar(self)
 	}
-	method verificarEntrega(paquete){
+	method verificarPago(paquete){
 		return paquete.estaPago()
 	}
 }
@@ -121,17 +124,17 @@ object sara{
 		return peso + vehiculo.pesoTotal()
 	}
 	method verificarEntrega(paquete, destino){
-		return self.verificarEntrega(paquete) && self.verificarDestino(destino)
+		return self.verificarPago(paquete) && self.verificarDestino(destino)
 	}
 	method verificarDestino(destino){
 		return destino.dejarPasar(self)
 	}
-	method verificarEntrega(paquete){
+	method verificarPago(paquete){
 		return paquete.estaPago()
 	}
 }
 object moto{
-	//la moto pesa 100kg 
+	// la moto pesa 100kg 
 	method pesoTotal(){
 		return 100
 	}
@@ -162,6 +165,9 @@ object paquete{
 		return estaPago
 	}
 }
+/*Deberia ser cambiado el nombre de la variable paqueteEntregado 
+y del metodo entregarPaquete, ya que parece que el mensajero 
+entrega el paquete despues de verifcar*/
 
 
 
@@ -169,104 +175,5 @@ object paquete{
 
 
 
-
-
-/*object empresa{
-	
-
-
-
-}*/
-/*object paquete{
-	var pagado = false
-
-	//pago del paquete
-	method pagar(){
-		pagado = true 
-	}
-}
-object jean {
-	const peso = 65
-
-	method pesoTotal(){
-		return peso 
-	}
-	method puedePasar(lugar){
-		if(lugar.dejarPasar(self)) = true{
-			return true 
-		} 
-		else{
-			return false 
-		}
-	}
-
-}
-object nero{
-	const peso = 0
-	var credito = false  
-
-	//setter del credito
-	method cargarCredito(){
-		credito = true 
-	} 
-}
-object sara{
-	var peso = 0
-	var vehiculo = null
-
-	//setter del peso 
-	method peso(_peso){
-		peso = _peso 
-	}
-	//setter de vehiculo
-	method transporte(_vehiculo){
-		vehiculo = _vehiculo
-	}
-	method pesoTotal(){
-		return peso + vehiculo.pesoTotal()
-	}
-}
-object moto{
-	const peso = 100
-
-	method pesoTotal(){
-		return peso
-	}
-}
-object camion{
-	const pesoCamion = 500
-	var cantAcoplados = 0
-	//var pesoTotal = 500 + 500 * cantAcoplados
-
-	//setter de la cantidad de acoplados 
-	method cantAcoplados(_cantAcoplados){
-		cantAcoplados = _cantAcoplados
-	} 
-	method pesoTotal(){
-		return pesoCamion + 500 * cantAcoplados
-	}
-
-}
-object puenteBrooklyn{
-	method dejarPasar(mensajero){
-		if(mensajero.pesoTotal() > 1000){
-			mensajero.puedePasar() = true 
-		}
-		else{
-			mensajero.puedePasar() = false 
-		}
-	}
-
-}
-object matrix{
-	method dejarPasar(mensajero){
-		if(mensajero.puedeLlamar() = true){
-			mensajero.puedePasar() = true 
-		}
-		else{
-			mensajero.puedePasar() = false 
-		}
-	}
-}*/
 
 
