@@ -1,0 +1,47 @@
+import example.*
+describe "Caso 1 " {
+//el paquete no esta pago, Neo no puede llevarlo a la matrix 
+    method initialize(){
+        neo.cargarCredito()
+        neo.verificarEntrega(paquete, matrix)
+    }
+ test "Caso 1 "{
+    assert.notThat(neo.paqueteEntregado())
+    }
+}
+describe "Caso 2"{
+//el paquete esta pago, puede ser llevado por Jean a la matrix 
+    method initialize(){
+        paquete.pagarPaquete()
+        jean.verificarEntrega(paquete, matrix)
+    }
+ test "Caso 2"{   
+    assert.that(jean.paqueteEntregado())
+    }
+}
+describe "Caso 3"{
+/*el paquete esta pago, no puede ser llevado por Saraa Brooklyn 
+Sara pesa 70kg, viaja en un camion con un solo acoplado*/
+    method initialize(){
+        paquete.pagarPaquete()
+        sara.peso(70)
+        sara.vehiculo(camion)
+        camion.cantAcoplados(1)
+        sara.verificarEntrega(paquete, puenteBrooklyn)
+    }
+test "Caso 3"{
+    assert.notThat(sara.paqueteEntregado())
+    }
+}
+describe "Caso 4"{
+//La misma entrega pero con una moto 
+    method initialize(){
+         paquete.pagarPaquete()
+         sara.peso(70)
+         sara.vehiculo(moto)
+         sara.verificarEntrega(paquete, puenteBrooklyn)
+    }
+test "caso 4"{
+    assert.that(sara.paqueteEntregado())
+    }
+}
