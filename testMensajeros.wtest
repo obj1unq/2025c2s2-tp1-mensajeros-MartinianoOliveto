@@ -1,0 +1,31 @@
+import example.*
+
+test "El paquete no esta pago, Neo no puede llevarlo a la matrix, Neo tiene credito"{
+    neo.cargarCredito()
+    assert.notThat(neo.puedeHacerLaEntrega(paquete,matrix))
+}
+test "El paquete esta pago, y Jean lo puede llevar a la matrix"{
+    paquete.pagarPaquete()
+    assert.that(jean.puedeHacerLaEntrega(paquete, matrix))
+}
+describe "Sara pesa 70kg, maneja un camion con un acoplado, el paquete esta pago"{
+    method initialize(){
+    paquete.pagarPaquete()
+    sara.peso(70)
+    sara.vehiculo(camion)
+    camion.cantAcoplados(1)
+    }
+  test "Sara no puede entregar el paquete"{
+    assert.notThat(sara.puedeHacerLaEntrega(paquete,puenteBrooklyn))
+    }
+}
+describe "Sara pesa 70kg, maneja una moto y el paquete esta pago"{
+    method initialize(){
+    paquete.pagarPaquete()
+    sara.peso(70)
+    sara.vehiculo(moto)
+    }
+test "Sara puede entregar el paquete"{
+    assert.that(sara.puedeHacerLaEntrega(paquete, puenteBrooklyn))
+    }
+}
