@@ -77,7 +77,7 @@ object sara{
 	}
 }
 object moto{
-	//la moto pesa 100kg 
+	// la moto pesa 100kg 
 	method pesoTotal(){
 		return 100
 	}
@@ -108,6 +108,7 @@ object paquete{
 		return estaPago
 	}
 }
+
 
 
 
